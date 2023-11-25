@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .slider-container {
+            width: 90%;
+            overflow: hidden;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .element {
+            flex: 0 0 auto;
+            padding: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="element element-1"> <iframe id="video1" class="video"
+                    src="https://www.youtube.com/embed/l1EssrLxt7E?ecver=2&enablejsapi=1" frameborder="0"
+                    allowfullscreen></iframe></div>
+            <div class="element element-2"> <iframe id="video2" class="video"
+                    src="https://www.youtube.com/embed/Rek0NWPCNOc?ecver=2&enablejsapi=1" frameborder="0"
+                    allowfullscreen></iframe> </div>
+            <div class="element element-3"> <iframe id="video3"
+                    src="https://www.youtube.com/embed/2QR11oDukn4?si=04XZYz3N6T1JRyv7?ecver=2&enablejsapi=1"
+                    frameborder="0" allowfullscreen></iframe></div>
+            <div class="element element-4"> <iframe id="video4" class="video"
+                    src="https://www.youtube.com/embed/jRAZlTEZi9I?si=aJ44yqwZWhYWSJqG?ecver=2&enablejsapi=1"
+                    frameborder="0" allowfullscreen></iframe></div>
+            <div class="element element-5"><iframe id="video5" class="video"
+                    src="https://www.youtube.com/embed/61ppyY5rUB0?si=6Dy2myvI11xDo0kU" frameborder="0"
+                    allowfullscreen></iframe></div>
+            <div class="element element-6"> <iframe id="video6" class="video"
+                    src="https://www.youtube.com/embed/sqJ6xZ9mUwE?si=FdGpO-I8P25ljA7Q" frameborder="0"
+                    allowfullscreen></iframe></div>
+            <div class="element element-7"><iframe id="video7" class="video"
+                    src="https://www.youtube.com/embed/4nC4VXHlys8?si=UiWqsEgUxTuVHecj" frameborder="0"
+                    allowfullscreen></iframe></div>
+            <div class="element element-8"> <iframe id="video8" class="video"
+                    src="https://www.youtube.com/embed/C01LeeMhwHc?si=6mNtex4hMGc_0b_U" frameborder="0"
+                    allowfullscreen></iframe></div>
+            <div class="element element-9"> <iframe id="video8" class="video"
+                    src="https://www.youtube.com/embed/C01LeeMhwHc?si=6mNtex4hMGc_0b_U" frameborder="0"
+                    allowfullscreen></iframe></div>
+            <div class="element element-10"><iframe id="video10" class="video"
+                    src="https://www.youtube.com/embed/6Cpd63_WXdI?si=XntfTa8-BLltPNio" frameborder="0"
+                    allowfullscreen></iframe></div>
+
+        </div>
+    </div>
+
+    <button onclick="prevSlide()">Previous</button>
+    <button onclick="nextSlide()">Next</button>
+
+    <script>
+        var currentIndex = 0;
+        var totalVideos = document.querySelectorAll('.element').length;
+        var videoWidth = 320; // Adjust based on the width of each video container
+        var players = [];
+
+
+
+        function onYouTubeIframeAPIReady() {
+            players.push(new YT.Player('video1', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video2', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video3', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video4', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video5', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video6', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video7', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video8', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video9', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+            players.push(new YT.Player('video10', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            }));
+
+
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                pauseOtherVideos(event.target.getVideoData().video_id);
+            }
+        }
+
+        function pauseOtherVideos(currentVideoId) {
+            players.forEach(function (player) {
+                if (player.getVideoData().video_id !== currentVideoId) {
+                    player.pauseVideo();
+                }
+            });
+        }
+
+        function nextSlide() {
+            if (currentIndex < totalVideos - 1) {
+                currentIndex++;
+                updateSlider();
+            }
+            if (currentIndex < 1) {
+                // show previous button 
+            }
+            console.log("currentIndex", currentIndex)
+            playCurrentVideo();
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+            console.log("currentIndex", currentIndex)
+            if (currentIndex < totalVideos - 2) {
+                // hide next button
+            }
+            playCurrentVideo();
+        }
+
+        function updateSlider() {
+            var newTransformValue = -currentIndex * videoWidth + 'px';
+            document.querySelector('.slider').style.transform = 'translateX(' + newTransformValue + ')';
+        }
+
+        function playCurrentVideo() {
+            players.forEach(function (player, index) {
+                if (index === currentIndex) {
+                    player.playVideo();
+                } else {
+                    player.pauseVideo();
+                }
+            });
+        }
+    </script>
+
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+</body>
+
+</html>

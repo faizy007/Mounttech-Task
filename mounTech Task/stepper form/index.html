@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <section class="multi-step-form">
+
+
+            <!-- #########STEP BUTTONS #########-->
+            <div class="step-wrap">
+                <div class="steps text-center">
+                    <button id="but1" class="active" type="button" disabled>Step One</button>
+                    <button id="but2" type="button" disabled>Step Two</button>
+                    <button id="but3" type="button" disabled>Step Three</button>
+                </div>
+            </div>
+
+            <!-- / #########STEPS#########-->
+
+            <form action="#" method="post">
+
+                <!-- ########### step 1 ####### -->
+                <fieldset aria-label="Step One" tabindex="-1" id="step-1" class="step-all">
+                    <h2>RESOURCE</h2>
+
+
+
+                    <p>
+
+                        <label for="title"></label>
+                        <span class="requireme">*</span><input class="form-control" type="text" name="title" id="title"
+                            placeholder="TITLE" required>
+                    </p>
+
+                    <h3>Type</h3>
+                    <p>
+
+                        <span class="requireme">*</span> <label></label>
+                        <select class="select" name="type" required>
+                            <option>SELECT ONE</option>
+                            <option value="1">Checklist</option>
+                            <option value="2">Drill, Tabletop, or Other Exercise</option>
+                            <option value="3">Form</option>
+                            <option value="4">Job Description</option>
+                            <option value="5">Memorandum of Understanding (MOU)</option>
+                            <option value="6">Organization Chart</option>
+                            <option value="7">Planning Guideline</option>
+                            <option value="8">Procedure</option>
+                            <option value="9">Report</option>
+                            <option value="10">School Policy</option>
+                            <option value="11">Template</option>
+                            <option value="12">Tool</option>
+                            <option value="13">Other</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="DESCRIPTION"></label><span class="requireme">*</span>
+                        <textarea rows="5" cols="50" class="form-control" type="textarea" name="description"
+                            id="description" placeholder="Please add as much detail as possible." required></textarea>
+                    </p>
+                    <p><input type="file" id="input"></p>
+                    <hr class="line" />
+
+                    <h2>TYPE</h2> Alison, I think this is what you are looking for but we will need to discuss.
+                    <p>
+                        <input type="checkbox" name="checklist" value="on"> <label for="checklist"> Checklist</label>
+                    </p>
+                    <!-- Checklist -->
+                    <div class="conditional" data-cond-option="checklist" data-cond-value="on">
+                        <label for="checklist-area"></label><span class="requireme">*</span><textarea
+                            class="form-control" type="textarea" name="checklist-area" id="checklist-area"
+                            placeholder="Please add as much detail as possible." required></textarea>
+                        <p><input type="file" id="input"></p>
+
+                    </div>
+                    <!-- / Checklist -->
+                    <p>
+                        <input type="checkbox" name="drill-other" value="on"> <label for="drill-other"> Drill, Tabletop,
+                            or Other Exercise</label>
+                    </p>
+                    <!-- Drill Other -->
+                    <div class="conditional" data-cond-option="drill-other" data-cond-value="on">
+                        <label for="drill-area"></label><span class="requireme">*</span><textarea class="form-control"
+                            type="textarea" name="drill-area" id="drill-area"
+                            placeholder="Please add as much detail as possible." required></textarea>
+                        <p><input type="file" id="input"></p>
+
+                    </div>
+                    <p>
+                        <button class="btn btn-teal btn-next" type="button" aria-controls="step-1">Continue</button>
+                    </p>
+
+                </fieldset>
+
+                <!-- ########### step 2 ########### -->
+                <fieldset aria-label="Step Two" tabindex="-1" id="step-2" class="step-all">
+                    <h2>AUTHORING AGENCY</h2>
+
+
+                    <p>
+                        <label for="organization"></label><span class="requireme">*</span>
+                        <input class="form-control" type="text" name="organization" id="organization"
+                            placeholder="Organization" required>
+                    </p>
+
+                    <p>
+                        <label for="url"></label><span class="requireme">*</span>
+                        <input class="form-control" type="text" name="url" id="url"
+                            placeholder="Organization Website URL" required>
+
+                    </p>
+
+                    <h3>Grantee Status</h3>
+                    <p>
+                        Is your agency a current or former Grants to States for School Emergency Management (GSEM),
+                        Readiness and Emergency Management for Schools (REMS), or Emergency Management for Higher
+                        Education (EMHE) grantee?
+                    </p>
+
+
+                    <p>My agency is a current GSEM grantee.</p>
+                    <label for="gsem"></label> <label><input type="radio" name="gsem" value="yes"><span></span>
+                        Yes</label>
+                    <label><input type="radio" name="gsem" value="no"><span></span> No</label>
+
+                    <div class="conditional" data-cond-option="gsem" data-cond-value="yes">
+                        <p>
+                            <label for="gsem-num"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="gsem-num" id="gsem-num"
+                                placeholder="Grantee Number">
+                        </p>
+                        <p>
+                            <label for="gsem-year"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="gsem-year" id="gsem-year"
+                                placeholder="Grant Award Year">
+                        </p>
+                    </div>
+
+                    <p>My agency is a former GSEM grantee.</p>
+                    <label for="f-gsem"></label> <label><input type="radio" name="f-gsem" value="yes"><span></span>
+                        Yes</label>
+                    <label><input type="radio" name="f-gsem" value="no"><span></span> No</label>
+
+                    <div class="conditional" data-cond-option="f-gsem" data-cond-value="yes">
+                        <p>
+                            <label for="f-gsem-num"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="f-gsem-num" id="f-gsem-num"
+                                placeholder="Grantee Number">
+                        </p>
+                        <p>
+                            <label for="f-gsem-year"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="f-gsem-year" id="f-gsem-year"
+                                placeholder="Grant Award Year">
+                        </p>
+                    </div>
+
+                    <p>My agency is a former REMS grantee.</p>
+                    <label for="f-rems"></label> <label><input type="radio" name="f-rems" value="yes"><span></span>
+                        Yes</label>
+                    <label><input type="radio" name="f-rems" value="no"><span></span> No</label>
+
+                    <div class="conditional" data-cond-option="f-rems" data-cond-value="yes">
+                        <p>
+                            <label for="f-rems-num"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="gf-rems-num" id="f-rems-num"
+                                placeholder="Grantee Number">
+                        </p>
+                        <p>
+                            <label for="f-rems-year"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="f-rems-year" id="f-rems-year"
+                                placeholder="Grant Award Year">
+                        </p>
+                    </div>
+
+                    <p>My agency is a former EMHE grantee.</p>
+                    <label for="f-emhe"></label> <label><input type="radio" name="f-emhe" value="yes"><span></span>
+                        Yes</label>
+                    <label><input type="radio" name="f-emhe" value="no"><span></span> No</label>
+
+                    <div class="conditional" data-cond-option="f-emhe" data-cond-value="yes">
+                        <p>
+                            <label for="f-emhe-num"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="f-emhe-num" id="f-emhe-num"
+                                placeholder="Grantee Number">
+                        </p>
+                        <p>
+                            <label for="f-emhe-year"></label><span class="requireme"></span>
+                            <input class="form-control" type="text" name="f-emhe-year" id="f-emhe-year"
+                                placeholder="Grant Award Year">
+                        </p>
+                    </div>
+
+                    <p>
+                        <input type="checkbox" name="checklist" value="on"> <label for="no-member"></label> No, my
+                        agency is not a current or former GSEM, REMS, or EMHE grantee.
+                    </p>
+
+
+
+                    <p>
+                        <button class="btn btn-default btn-prev" type="button" aria-controls="step-1">Back</button>
+                        <button class="btn btn-default btn-next" type="button" aria-controls="step-3">Continue</button>
+                    </p>
+                </fieldset>
+
+
+
+
+                <!-- ########### step 3 ########### -->
+
+                <fieldset aria-label="Step Three" tabindex="-1" id="step-3" class="step-all">
+                    <h2>Submission and Authorization</h2>
+
+                    <h3>Terms of Submission</h3>
+                    <p><label for="agree-to-terms"></label><span class="requireme">*</span><input type="checkbox"
+                            name="agree-to-terms" value="agree-to-terms" required> I agree to the Terms of Submission
+                        (by providing this information, you agree that you are authorized to release this resource to
+                        the REMS TA Center for general inclusion on the Tool Box, if selected</p>
+
+
+                    <p><label for="permission"></label><span class="requireme">*</span><input type="checkbox"
+                            name="permission" value="permission" required> I have permission and proper copyright
+                        clearance to allow the REMS TA Center to post this document as a part of the Tool Box
+                    </p>
+                    <hr class="line" />
+
+                    <p>
+                        <label for="first-name"></label>
+                        <span class="requireme">*</span><input class="form-control" type="text" name="first-name"
+                            id="first-name" placeholder="FIRST NAME" required>
+                    </p>
+                    <p>
+                        <label for="last-name"></label><span class="requireme">*</span>
+                        <input class="form-control" type="text" name="last-name" id="last-name" placeholder="LAST NAME"
+                            required>
+                    </p>
+
+                    <p>
+                        <label for="organization"></label><span class="requireme">*</span>
+                        <input class="form-control" type="text" name="organization" id="organization"
+                            placeholder="ORGANIZATION" required>
+                    </p>
+
+                    <p>
+                        <label for="title"></label><span class="requireme">*</span>
+                        <input class="form-control" type="text" name="title" id="title" placeholder="TITLE" required>
+                    </p>
+
+                    <label for="phone-number"></label><span class="requireme">*</span>
+                    <input class="form-control" type="tel" name="phone-number" id="phone-number" minlength="10"
+                        placeholder="WORK PHONE" required>
+                    </p>
+                    <p>
+                        <label for="email-address"></label><span class="requireme">*</span>
+                        <input class="form-control" type="email" name="email-address" id="email-address"
+                            placeholder="WORK EMAIL" required>
+                    </p>
+
+                    <p>
+                        <button class="btn btn-default btn-prev" type="button" aria-controls="step-4">BACK</button>
+                        <button class="btn btn-success" type="submit">Submit</button>
+                        <!-- <button class="btn btn-default btn-edit" type="button">Edit</button>  -->
+                    </p>
+                </fieldset>
+
+            </form>
+        </section>
+    </div>
+
+    <!-- 
+    HTML Requirements
+    
+    1. Include .multi-step-form
+    2. Define parents e.g. fieldset
+    3. Each parent should own a unique ID with aria-label
+    4. Each next/prev button owns aria-controls which points to unique ID of parents
+    5. For validation each field should own required attribute
+    
+    <section class="multi-step-form">
+        <form>
+    
+            <fieldset aria-label="Step One" tabindex="-1" id="step-1">
+                ...
+                <button class="btn-next" type="button" aria-controls="step-2">Next</button>
+            </fieldset>
+    
+            <fieldset aria-label="Step Two" tabindex="-1" id="step-2">
+                ...
+                <button class="btn-prev" type="button" aria-controls="step-1">Previous</button>
+                <button class="btn-next" type="button" aria-controls="step-3">Next</button>
+            </fieldset>
+    
+            <fieldset aria-label="Step Three" tabindex="-1" id="step-3">
+                ...
+                <button type="submit">Submit</button>
+                <button class="btn-edit" type="button">Edit</button>
+                <button type="reset">Start Over</button>
+            </fieldset>
+    
+        </form>
+    </section>
+    
+    
+    -->
+
+    <!-- Conditional Examples *********************************************************** 
+    
+                                    <p>
+                                        <input type="checkbox" name="classroom-teacher"><span></span><label for="classroom-teacher" <label> Classroom Teacher</label>
+                                    </p>
+            
+                                    <div class="conditional" data-cond-option="classroom-teacher" data-cond-value="on">
+                                        <p>That's a shame. Will you change your mind?</p>
+    
+                                        <label><input type="radio" name="teach4" value="yes"> Yes</label>
+                                        <label><input type="radio" name="teach4" value="no">No</label>
+    
+                                        <div class="conditional" data-cond-option="teach4" data-cond-value="yes">
+                                            Great!
+                                        </div>
+                                    </div>
+    
+                                    <p>
+                                        <label>or choose:</label>
+            <select class="select" name="teach5">
+          <option>Pick one!</option>
+          <option value="yes">Yes!</option>
+          <option value="no">No!</option>
+        </select>
+                        </p>
+                                    
+                <div class="conditional" data-cond-option="teach5" data-cond-value="yes">
+                                        Works with selects!
+                                    </div>
+                                    <p>
+                                        <label>or type:</label>
+                                        <input type="text" name="teach6" placeholder="yay">
+                                    </p>
+                                    <p>
+                                        <div class="conditional" data-cond-option="teach6" data-cond-value="yay">
+                                            Works with text input
+                                        </div>
+                            </div>
+                            </p>
+                        </div>
+    End Conditional Examples -->
+
+    <!-- date range 
+    Try this . . .
+    http://www.daterangepicker.com/#config
+    
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   
+
+    <!-- Include moment.js (required by daterangepicker) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    
+    <!-- Include daterangepicker library -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css" />
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  
+    <script src='script.js' type="text/javascript"></script>
+</body>
+
+</html>
